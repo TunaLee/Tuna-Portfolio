@@ -487,9 +487,6 @@ export default function Portfolio() {
             <div style={{ fontSize: 28, fontWeight: 900, marginBottom: 12, color: P.ac, fontFamily: "'JetBrains Mono', monospace" }}>//</div>
             <h3 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 4px" }}>개발참치</h3>
             <p style={{ color: P.t2, margin: "0 0 6px", fontSize: 14 }}>AI 엔지니어 & 풀스택 개발자 & 교육자</p>
-            <p style={{ color: P.t3, margin: "0 0 24px", fontSize: 13, fontStyle: "italic" }}>
-              "만드는 것도, 가르치는 것도, 사업으로 연결하는 것도 — 전부 제가 합니다."
-            </p>
             <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
               {CONTACTS.map(c => (
                 <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer" style={{
@@ -508,7 +505,7 @@ export default function Portfolio() {
         {/* ── FOOTER ── */}
         <footer style={{ textAlign: "center", padding: "32px 0 48px", borderTop: `1px solid ${P.bd}` }}>
           <p style={{ fontSize: 12, color: P.t3, fontFamily: "'JetBrains Mono', monospace" }}>
-            © 2026 개발참치 — Built with React · Deployed on Vercel
+            © 2026 개발참치
           </p>
         </footer>
       </div>

@@ -220,7 +220,7 @@ const TIMELINE = [
 ];
 
 const CONTACTS = [
-  { label: "dongwon1103@naver.com", href: "mailto:dongwon1103@naver.com" },
+  { label: "dongwon1103@gmail.com", href: "mailto:dongwon1103@gmail.com" },
   { label: "github.com/tunalee", href: "https://github.com/tunalee" },
 ];
 

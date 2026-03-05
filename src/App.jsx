@@ -138,8 +138,8 @@ const PROJECTS = [
     decision: "로컬 GPU 서버 선택 이유: 128GB 통합 메모리로 Qwen를 로컬에서 추론 가능. 의료기관 내부망에서 환자 데이터를 외부로 보내지 않고 처리할 수 있는 구조",
   },
   {
-    id: "comduck",
-    title: "싸덕 COMDUCK",
+    id: "CYBERDUCK",
+    title: "싸덕 CYBERDUCK",
     org: "외주 개발",
     period: "2026.01 — 2026.03",
     color: P.ac,
@@ -216,7 +216,7 @@ const TIMELINE = [
   { year: "2023", text: "클레온 퇴사 (3년) · 프리랜서 전환 · 외주 개발 시작", type: "work" },
   { year: "2024", text: "부트캠프 주강사 — ML/DL 전 과정 · 풀스택 · 인도네시아 영어 강의", type: "edu" },
   { year: "2025", text: "왕진연구소 — 재택의료 AI 음성분석 시스템", type: "work" },
-  { year: "2026", text: "싸덕 COMDUCK — AI 추천 플랫폼", type: "work" },
+  { year: "2026", text: "싸덕 CYBERDUCK — AI 추천 플랫폼", type: "work" },
 ];
 
 const CONTACTS = [

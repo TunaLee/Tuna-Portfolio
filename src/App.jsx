@@ -47,6 +47,47 @@ a{color:inherit;text-decoration:none}
 .stagger-3{animation-delay:.3s}
 .stagger-4{animation-delay:.4s}
 .stagger-5{animation-delay:.5s}
+
+/* ── responsive ── */
+.nav-links{display:flex;gap:20px}
+.mobile-menu-btn{display:none;background:none;border:none;color:${P.t};font-size:22px;cursor:pointer;padding:4px}
+.mobile-overlay{display:none}
+
+.hero-title{font-size:44px}
+.hero-desc{font-size:17px}
+.roles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stats-row{display:flex;gap:36px;flex-wrap:wrap}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.contact-card{padding:40px 32px}
+.section-title{font-size:28px}
+
+/* tablet ≤ 768px */
+@media(max-width:768px){
+  .hero-title{font-size:32px}
+  .hero-desc{font-size:15px}
+  .roles-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-row{gap:24px}
+  .skills-grid{grid-template-columns:1fr}
+  .detail-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:54px;left:0;right:0;bottom:0;background:${P.bg}f5;backdrop-filter:blur(20px);padding:32px 24px;gap:24px;z-index:99;animation:fadeIn .2s ease}
+  .nav-links.open span{font-size:18px !important}
+  .mobile-menu-btn{display:block}
+  .mobile-overlay.open{display:block;position:fixed;inset:0;z-index:98}
+  .contact-card{padding:28px 20px}
+  .section-title{font-size:22px}
+}
+
+/* mobile ≤ 480px */
+@media(max-width:480px){
+  .hero-title{font-size:26px}
+  .hero-desc{font-size:14px}
+  .roles-grid{grid-template-columns:1fr 1fr}
+  .stats-row{gap:16px}
+  .contact-card{padding:24px 16px}
+  .section-title{font-size:20px}
+}
 `;
 
 /* ═══════════ DATA ═══════════ */
@@ -82,7 +123,7 @@ const PROJECTS = [
     org: "왕진연구소",
     period: "2025.08 — 현재",
     color: P.pk,
-    tags: ["pyannote", "ECAPA-TDNN", "faster-whisper", "Qwen", "Neo4j", "FHIR R4B", "vLLM", "Label Studio"],
+    tags: ["pyannote", "ECAPA-TDNN", "faster-whisper", "Qwen", "Neo4j", "FHIR", "vLLM", "Label Studio"],
     summary: "방문진료 현장의 3인 대화(의사/간호사/환자)를 실시간 분석하여 FHIR 표준 의료문서를 자동 생성",
     problem: "재택의료 진료 기록을 수기로 작성하는 비효율과 의료 표준 코딩(ICD-10, SNOMED CT)의 높은 난이도",
     highlights: [
@@ -102,7 +143,7 @@ const PROJECTS = [
     org: "외주 개발",
     period: "2026.01 — 2026.03",
     color: P.ac,
-    tags: ["LLM Tool Calling", "RAG", "SSE Streaming", "NestJS 11", "React 18", "TypeORM", "PostgreSQL", "Socket.IO", "Electron", "Turborepo"],
+    tags: ["LLM Tool Calling", "RAG", "SSE Streaming", "NestJS", "React", "TypeORM", "PostgreSQL", "Socket.IO", "Electron", "Turborepo"],
     summary: "AI 기반 PC/노트북 추천 + 중고 거래 플랫폼. 자연어로 질문하면 20개+ 전문 도구가 실시간 DB 조회",
     problem: "PC 구매 시 정보 파편화(다나와/중고나라/커뮤니티 분산), 초보자의 스펙 판단 불가, 중고 시세 불투명",
     highlights: [
@@ -159,15 +200,16 @@ const PROJECTS = [
 ];
 
 const SKILLS = {
-  "AI / ML": { color: P.pk, items: ["LLM (Tool Calling · RAG · SSE)", "PyTorch", "TensorFlow", "faster-whisper", "pyannote", "vLLM / Ollama", "Neo4j", "FHIR R4B", "Label Studio"] },
-  "Backend": { color: P.ac, items: ["NestJS", "Django", "FastAPI", "Spring Boot", "PostgreSQL", "MySQL", "GraphQL", "Socket.IO", "TypeORM"] },
-  "Frontend": { color: P.cy, items: ["React 18", "TypeScript", "Svelte", "Electron", "Ant Design", "Zustand", "TanStack Query"] },
+  "AI / ML": { color: P.pk, items: ["LLM (Tool Calling · RAG · SSE)", "PyTorch", "TensorFlow", "faster-whisper", "pyannote", "vLLM / Ollama", "Neo4j", "FHIR", "Label Studio"] },
+  "Backend": { color: P.ac, items: ["NestJS", "Django", "FastAPI", "Spring Boot", "GraphQL", "Socket.IO", "TypeORM"] },
+  "Database": { color: P.rd, items: ["PostgreSQL", "MySQL", "Redis", "MongoDB", "Elasticsearch"] },
+  "Frontend": { color: P.cy, items: ["React", "TypeScript", "Svelte", "Electron", "Ant Design", "Zustand", "TanStack Query"] },
   "Infra / DevOps": { color: P.gn, items: ["AWS (EC2·S3·RDS·ECR·VPC·EBS)", "Docker", "Jenkins", "GitHub Actions", "Turborepo"] },
   "Systems": { color: P.or, items: ["C++", "Kotlin", "GStreamer", "WebRTC", "OpenCV", "Python Ray", "GPGPU", "FFmpeg"] },
 };
 
 const TIMELINE = [
-  { year: "2014", text: "홍익대학교 컴퓨터공학과 입학", type: "edu" },
+  { year: "2014", text: "홍익대학교 서울캠퍼스 컴퓨터공학과 수석입학", type: "award" },
   { year: "2019", text: "고려대 인턴 — 알츠하이머 PET 영상 예측 (AutoEncoder + T-SNE)", type: "work" },
   { year: "2020", text: "홍익대 졸업 · 해커톤 최우수상 + 우수상 (중고차 시세 예측, LoL 승률 예측)", type: "award" },
   { year: "2020", text: "클레온 입사 — 딥러닝 Worker, WebRTC, 미디어 서버 개발, 풀스택 개발", type: "work" },
@@ -199,7 +241,7 @@ function SectionTitle({ children, sub }) {
     <div style={{ marginBottom: 32 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
         <div style={{ width: 32, height: 2, background: `linear-gradient(90deg, ${P.ac}, transparent)` }} />
-        <h2 style={{ fontSize: 28, fontWeight: 800, letterSpacing: "-0.02em" }}>{children}</h2>
+        <h2 className="section-title" style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>{children}</h2>
       </div>
       {sub && <p style={{ fontSize: 14, color: P.t2, marginLeft: 44 }}>{sub}</p>}
     </div>
@@ -275,7 +317,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
           </div>
 
           {/* arch + impact */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <div className="detail-grid">
             <div style={{ background: P.bg, borderRadius: 10, padding: 16 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: P.t3, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>Architecture</div>
               <div style={{ fontSize: 12, color: P.t, lineHeight: 1.6, fontFamily: "'JetBrains Mono', monospace" }}>{architecture}</div>
@@ -297,6 +339,7 @@ export default function Portfolio() {
   const [openProject, setOpenProject] = useState(null);
   const [activeNav, setActiveNav] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const ids = ["hero", "projects", "skills", "timeline", "contact"];
@@ -346,10 +389,15 @@ export default function Portfolio() {
           }} style={{ fontWeight: 800, fontSize: 15, color: P.ac, display: "flex", alignItems: "center", gap: 6, cursor: "pointer" }}>
             <span style={{ fontFamily: "'JetBrains Mono', monospace" }}>//</span> 개발참치
           </span>
-          <div style={{ display: "flex", gap: 20 }}>
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(v => !v)} aria-label="메뉴">
+            {menuOpen ? "✕" : "☰"}
+          </button>
+          {menuOpen && <div className={`mobile-overlay${menuOpen ? " open" : ""}`} onClick={() => setMenuOpen(false)} />}
+          <div className={`nav-links${menuOpen ? " open" : ""}`}>
             {navItems.map(n => (
               <span key={n.id} onClick={() => {
                 setActiveNav(n.id);
+                setMenuOpen(false);
                 const el = document.getElementById(n.id);
                 if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
               }} style={{
@@ -378,20 +426,20 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <h1 className="fade-up stagger-1" style={{ fontSize: 44, fontWeight: 900, lineHeight: 1.15, marginBottom: 16, letterSpacing: "-0.03em" }}>
+          <h1 className="fade-up stagger-1 hero-title" style={{ fontWeight: 900, lineHeight: 1.15, marginBottom: 16, letterSpacing: "-0.03em" }}>
             만들고, 가르치고,<br />
             <span style={{ background: `linear-gradient(135deg, ${P.ac}, ${P.pk})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               사업으로 연결합니다.
             </span>
           </h1>
 
-          <p className="fade-up stagger-2" style={{ fontSize: 17, color: P.t2, lineHeight: 1.75, maxWidth: 580, marginBottom: 36 }}>
+          <p className="fade-up stagger-2 hero-desc" style={{ color: P.t2, lineHeight: 1.75, maxWidth: 580, marginBottom: 36 }}>
             LLM/RAG 기반 AI 서비스부터 프론트엔드, 백엔드, 데스크톱 앱, GPU 인프라까지
             end-to-end로 만듭니다. 그리고 그걸 가르칩니다.
           </p>
 
           {/* Role Cards */}
-          <div className="fade-up stagger-3" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 36 }}>
+          <div className="fade-up stagger-3 roles-grid" style={{ marginBottom: 36 }}>
             {ROLES.map(r => (
               <div key={r.label} style={{
                 background: P.s1, border: `1px solid ${P.bd}`, borderRadius: 14,
@@ -405,7 +453,7 @@ export default function Portfolio() {
           </div>
 
           {/* Stats */}
-          <div className="fade-up stagger-4" style={{ display: "flex", gap: 36, flexWrap: "wrap" }}>
+          <div className="fade-up stagger-4 stats-row">
             {STATS.map(s => (
               <div key={s.label}>
                 <div style={{ fontSize: 26, fontWeight: 900, color: P.ac, fontFamily: "'JetBrains Mono', monospace" }}>{s.num()}</div>
@@ -431,7 +479,7 @@ export default function Portfolio() {
         {/* ── SKILLS ── */}
         <section id="skills" style={{ marginBottom: 72 }}>
           <SectionTitle sub="실무에서 사용해온 기술 스택">Skills</SectionTitle>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <div className="skills-grid">
             {Object.entries(SKILLS).map(([cat, { color, items }]) => (
               <div key={cat} style={{
                 background: P.s1, border: `1px solid ${P.bd}`, borderRadius: 14, padding: 22,
@@ -478,9 +526,9 @@ export default function Portfolio() {
         {/* ── CONTACT ── */}
         <section id="contact" style={{ marginBottom: 64 }}>
           <SectionTitle sub="프로젝트 의뢰 · 교육 협업 · 채용 제안 환영합니다">Contact</SectionTitle>
-          <div style={{
+          <div className="contact-card" style={{
             background: P.s1, border: `1px solid ${P.bd}`, borderRadius: 16,
-            padding: "40px 32px", textAlign: "center",
+            textAlign: "center",
             position: "relative", overflow: "hidden",
           }}>
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${P.ac}, ${P.pk}, ${P.cy})` }} />

@@ -163,11 +163,11 @@ const PROJECTS = [
     org: "클레온 (정규직 3년)",
     period: "2020.12 — 2023.11",
     color: P.cy,
-    tags: ["PyTorch", "TensorRT", "WebRTC", "GStreamer", "C++", "Kotlin", "Python Ray", "NestJS", "Django", "AWS"],
+    tags: ["PyTorch", "ONNX", "TensorRT", "WebRTC", "GStreamer", "C++", "Kotlin", "Python Ray", "NestJS", "Django", "AWS"],
     summary: "딥러닝 기반 얼굴합성·입모양 생성 모델 서빙부터 WebRTC 실시간 스트리밍, 미디어 처리까지 end-to-end",
     problem: "실시간으로 얼굴을 합성하고 입모양을 생성하여 자연스러운 AI 아바타 영상을 만드는 기술적 난제",
     highlights: [
-      { title: "딥러닝 Worker", desc: "Segmentation → 얼굴합성 latent 조절 → 입모양 생성 smoothing → PyTorch to TensorRT 양자화. Tensor 차원/색상 반전 문제 트래킹 및 해결" },
+      { title: "딥러닝 Worker", desc: "Segmentation → 얼굴합성 latent 조절 → 입모양 생성 smoothing → PyTorch → ONNX → TensorRT 양자화(FP16/INT8). Tensor 차원/색상 반전 문제 트래킹 및 해결" },
       { title: "Ray 병렬처리", desc: "multi-GPU/multi-core 동영상 프레임 단위를 actor 단위로 병렬 처리하는 코드 개발" },
       { title: "WebRTC 시스템", desc: "C++ GStreamer 영상/음성 송출 파이프라인 + Python Signalling 서버 + React 클라이언트 (ICE/SDP 교환)" },
       { title: "미디어 서버", desc: "Kotlin FFmpeg Builder. concat merge로 re-encoding 대비 1.8배 속도 향상. 세로영상 자막 적용" },
